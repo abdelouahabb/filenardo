@@ -23,7 +23,7 @@ example:
 
 ``python filenardo.py --path=/some/where --url=192.168.1.2 --port=8000``
 
-Dependecies
+Dependencies
 =========
 Of course you will need [Tornado][1] ^_^
 
