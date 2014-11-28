@@ -21,7 +21,11 @@ Just run
 
 example:
 
-``python filenardo.py --path=/some/where --url=192.168.1.2 --port=8888``
+``python filenardo.py --path=/some/where --url=192.168.1.2 --port=8000``
+
+Dependecies
+=========
+Of course you will need [Tornado][1] ^_^
 
 Why the name
 =========
