@@ -11,13 +11,13 @@ pat = os.path.dirname(__file__)
 
 define("path", default=pat, help="The Folder")
 define("url", default='127.0.0.1', help="The URL")
-define("port", default=8888, type=int, help="Use a free port")
+define("port", default=8000, type=int, help="Use a free port")
 
 options.parse_command_line()
 
 path = options.path
 
-names = os.walk(path).next()[2]
+names = os.walk(path).__next__()[2]
 
 files = []
 
@@ -29,8 +29,7 @@ for fil in glob.glob(path+'/*.*'):
 
 
 class FilesLister(tornado.web.RequestHandler):
-    @tornado.web.asynchronous
-    def get(self):
+    async def get(self):
         self.write('<ol>')
         for i in zip(files, names):
             self.write('<li><a href="{0}" title="{1}">{0}</a></li>'.format(i[1], i[0]))
@@ -52,5 +51,5 @@ application = tornado.web.Application(urls, **settings)
 if __name__ == "__main__":
     server = tornado.httpserver.HTTPServer(application)
     server.listen(port=options.port, address=options.url)
-    print 'Running on {0}:{1}'.format(options.url, options.port)
+    print('Running on {0}:{1}'.format(options.url, options.port))
     tornado.ioloop.IOLoop.instance().start()
